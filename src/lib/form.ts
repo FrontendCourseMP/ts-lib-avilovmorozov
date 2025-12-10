@@ -3,6 +3,7 @@ import Input from "./Input";
 export function form(element: HTMLFormElement) {
   const inputs = element.querySelectorAll("input");
   const inputMap = new Map<string, HTMLInputElement>();
+  const inputClasses: Input[] = [];
 
   for (const input of inputs) {
     if (!input.name) {
@@ -36,14 +37,20 @@ export function form(element: HTMLFormElement) {
         throw new Error("There is no input with this name!");
       }
 
-      return new Input(input);
+      const x = new Input(input);
+      inputClasses.push(x);
+      return x;
     },
 
-    validate() {
+    validate(callback: (data: FormData) => void) {
       element.addEventListener("submit", (ev) => {
         ev.preventDefault();
 
-        // TODO: добавить сбор данных
+        if (inputClasses.every((input) => input.validate())) {
+          const data = new FormData(element);
+
+          callback(data);
+        }
       });
     },
   };
