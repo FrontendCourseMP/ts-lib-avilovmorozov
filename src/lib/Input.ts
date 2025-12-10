@@ -1,4 +1,4 @@
-export default class Input {
+class Input {
   private element: HTMLInputElement;
   private messages: Partial<Record<keyof ValidityState, string>> = {};
 
@@ -96,3 +96,5 @@ export default class Input {
     }
   }
 }
+
+export default Input;
