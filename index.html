@@ -1,20 +1,41 @@
 <!doctype html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ts-val</title>
-  </head>
-  <body>
-    <main>
-      <section>
-        <form novalidate>
-          <label>Имя <input type="text" required></label>
-          <p role="alert" aria-live="assertive"></p>
-          <button type="submit">Отправить</button>
-        </form>
-      </section>
-    </main>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ts-val</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <main>
+    <div class="form__container">
+      <h2 class="form__title">Вход</h2>
+      <form novalidate class="form__main" id="auth">
+
+        <div class="input__container">
+          <label for="phone" class="input__label">Номер телефона</label>
+          <input class="input__main" name="phone" id="phone" aria-describedby="phone-error" type="text" required
+            pattern="\+\d-\d{3}-\d{3}-\d{4}">
+          <span class="input__error" id="phone-error"></span>
+        </div>
+
+        <div class="input__container">
+          <label for="password" class="input__label">Пароль</label>
+          <input class="input__main" name="password" id="password" aria-describedby="password-error" type="text"
+            required>
+          <span class="input__error" id="password-error"></span>
+        </div>
+
+        <button class="form__button" type="submit">Отправить</button>
+      </form>
+    </div>
+  </main>
+  <script type="module" src="/src/index.ts"></script>
+</body>
+
 </html>
